@@ -30,11 +30,11 @@ export function TemperatureChart({ weather }: TemperatureChartProperties) {
   const chartConfig = {
     max: {
       label: 'Max Temp',
-      color: 'var(--chart-2)', // red for max temp
+      color: 'var(--chart-1)', // green - brand color
     },
     min: {
       label: 'Min Temp',
-      color: 'var(--chart-1)', // blue for min temp
+      color: 'var(--chart-2)', // navy - contrast
     },
   } satisfies ChartConfig;
 

@@ -28,7 +28,7 @@ export function NewsList({ news, countryName }: NewsListProperties) {
                   rel="noopener noreferrer"
                   className="block group"
                 >
-                  <h4 className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
+                  <h4 className="font-medium text-gray-900 group-hover:text-emerald-600 transition-colors mb-1">
                     {article.title}
                   </h4>
                   <div className="flex items-center gap-2 text-xs text-gray-500">

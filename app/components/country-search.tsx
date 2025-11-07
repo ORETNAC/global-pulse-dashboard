@@ -140,14 +140,14 @@ export function CountrySearch({ onSelect }: CountrySearchProperties) {
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
           placeholder="Type a country name..."
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
           disabled={isLoading}
         />
 
         {/* Loading indicator */}
         {isLoading && (
           <div className="absolute right-3 top-2.5">
-            <div className="animate-spin h-5 w-5 border-2 border-blue-500 border-t-transparent rounded-full"></div>
+            <div className="animate-spin h-5 w-5 border-2 border-emerald-500 border-t-transparent rounded-full"></div>
           </div>
         )}
 
@@ -166,7 +166,7 @@ export function CountrySearch({ onSelect }: CountrySearchProperties) {
                 onClick={() => handleSelect(country.name)}
                 onMouseEnter={() => setHighlightedIndex(index)}
                 className={`w-full px-4 py-3 text-left focus:outline-none flex items-center gap-3 transition-colors ${
-                  index === highlightedIndex ? 'bg-blue-100' : 'hover:bg-blue-50'
+                  index === highlightedIndex ? 'bg-emerald-100' : 'hover:bg-emerald-50'
                 }`}
               >
                 <img
@@ -194,12 +194,12 @@ export function CountrySearch({ onSelect }: CountrySearchProperties) {
       <div className="mt-4">
         <p className="text-sm text-gray-600 mb-2">Popular countries:</p>
         <div className="flex flex-wrap gap-2">
-          {['Japan', 'United States', 'Brazil', 'France', 'Germany', 'Australia'].map(
+          {['Colombia', 'USA', 'Brazil', 'France', 'Germany' ].map(
             (country) => (
               <button
                 key={country}
                 onClick={() => handleSelect(country)}
-                className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                className="px-3 py-1 text-sm border border-emerald-500 text-emerald-700 hover:bg-emerald-50 rounded-full transition-colors"
               >
                 {country}
               </button>

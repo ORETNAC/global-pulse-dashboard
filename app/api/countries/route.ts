@@ -23,9 +23,8 @@ export async function GET() {
       });
     }
 
-    // Fetch from REST Countries API with only needed fields
     const response = await fetch(
-      'https://restcountries.com/v3.1/all?fields=name,cca2,flags',
+      'https://restcountries.com/v3.1/all?fields=name,cca2,flags,capitalInfo',
       { next: { revalidate: 86_400 } } // Cache for 24 hours
     );
 
@@ -35,13 +34,21 @@ export async function GET() {
 
     const data = await response.json();
 
-    // Transform to simplified format
+    // Transform to simplified format and filter out territories without capitals
     const countries: CountryListItem[] = data
-      .map((country: { name: { common: string }; cca2: string; flags: { svg: string } }) => ({
-        name: country.name.common,
-        code: country.cca2,
-        flag: country.flags.svg,
-      }))
+      .filter((country: { capitalInfo?: { latlng?: number[] } }) => {
+        // Only include countries with capital coordinates
+        return country.capitalInfo?.latlng && country.capitalInfo.latlng.length === 2;
+      })
+      .map((country: { name: { common: string }; cca2: string; flags: { svg: string } }) => {
+        // Special case: Use "USA" instead of "United States" for clarity
+        const displayName = country.cca2 === 'US' ? 'USA' : country.name.common;
+        return {
+          name: displayName,
+          code: country.cca2,
+          flag: country.flags.svg,
+        };
+      })
       .toSorted((a: CountryListItem, b: CountryListItem) => a.name.localeCompare(b.name));
 
     // Cache for 24 hours (countries list doesn't change often)
