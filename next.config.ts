@@ -14,13 +14,13 @@ const cspHeaderDev = `
     frame-ancestors 'none';
 `;
 
-// CSP for production (strict security)
+// CSP for production (allow Next.js to work)
 const cspHeaderProd = `
     default-src 'self';
-    script-src 'self';
-    style-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval';
+    style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: https:;
-    font-src 'self';
+    font-src 'self' data:;
     connect-src 'self' https://restcountries.com https://api.open-meteo.com https://newsdata.io;
     object-src 'none';
     base-uri 'self';
