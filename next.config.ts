@@ -7,6 +7,7 @@ const cspHeaderDev = `
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: https:;
     font-src 'self' data:;
+    connect-src 'self' https://restcountries.com https://api.open-meteo.com https://newsdata.io;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
@@ -20,6 +21,7 @@ const cspHeaderProd = `
     style-src 'self';
     img-src 'self' blob: data: https:;
     font-src 'self';
+    connect-src 'self' https://restcountries.com https://api.open-meteo.com https://newsdata.io;
     object-src 'none';
     base-uri 'self';
     form-action 'self';

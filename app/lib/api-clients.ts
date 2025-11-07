@@ -119,21 +119,3 @@ export function getWeatherCondition(code: number): string {
 
   return conditions[code] || 'Unknown';
 }
-
-/**
- * Gets weather emoji based on condition string
- * @param conditions - Weather condition string
- * @returns Weather emoji
- */
-export function getWeatherEmoji(conditions: string): string {
-  const lower = conditions.toLowerCase();
-
-  if (lower.includes('clear')) return '☀️';
-  if (lower.includes('cloud')) return '⛅';
-  if (lower.includes('rain') || lower.includes('drizzle')) return '🌧️';
-  if (lower.includes('snow')) return '❄️';
-  if (lower.includes('thunder')) return '⛈️';
-  if (lower.includes('fog')) return '🌫️';
-
-  return '🌡️';
-}
