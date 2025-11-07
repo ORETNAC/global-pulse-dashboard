@@ -23,5 +23,6 @@ export default defineConfig([
     "next.config.ts",
     "package-lock.json",
     ".cache/**",
+    "components/ui/**",
   ]),
 ]);
